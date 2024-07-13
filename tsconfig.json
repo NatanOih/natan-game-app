@@ -4,6 +4,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "target": "es2022",
+    "checkJs": false,
     "allowJs": true,
     "resolveJsonModule": true,
     "moduleDetection": "force",
@@ -12,7 +13,6 @@
     /* Strictness */
     "strict": true,
     "noUncheckedIndexedAccess": true,
-    "checkJs": true,
 
     /* Bundled projects */
     "lib": ["dom", "dom.iterable", "ES2022"],

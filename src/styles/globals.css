@@ -1,3 +1,250 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Neucha&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --color1: #bfe4e1f6;
+  --color1-dark: rgb(182, 203, 230);
+  --color1-darker: rgb(54, 82, 119);
+  --color2: rgb(28, 27, 31);
+  --color2-dark: rgb(113, 188, 207);
+  --color2-darker: rgb(157, 225, 230);
+
+  --bg-main: #f0f2f5;
+  --bg-body: #fff;
+  --color-txt: #000;
+  --filled-color: #000;
+  --filled-bg: #caf0f8;
+
+  --white: #fff;
+  --blue: #73bbd4;
+  --red: #e91e63;
+  --black: #000;
+
+  --nav-size: 70px;
+  --sudoku-cell-size: 50px;
+
+  --border-radius: 10px;
+
+  --space-y: 20px;
+
+  --gap: 5px;
+
+  --font-size: 1.5rem;
+  --font-size-lg: 2rem;
+  --font-size-xl: 3rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+/* body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+} */
+
+.tile {
+  box-shadow:
+    #63627754 0px 2px 4px,
+    #6767745d 0px 7px 13px -3px,
+    #3f3b6c54 0px -3px 0px inset;
+}
+
+.tile:hover {
+  background-color: var(--filled-bg);
+  color: var(--filled-color);
+  transform: scale(1.01);
+  transition: 0.1s ease-in-out;
+}
+
+.tile:focus {
+  background-color: var(--filled-bg);
+  color: var(--filled-color);
+}
+
+.taken {
+  background-color: var(--color1-dark);
+  color: var(--color2);
+}
+
+.tile.init {
+  background-color: var(--color1-darker);
+  /* color: var(--color2-dark); */
+  color: #010101;
+}
+
+.highlight {
+  background-color: var(--color1);
+  /* filter: blur(0.1px); */
+  box-shadow: 1px 1px 9px -4px rgba(255, 255, 255, 0.2);
+  /* transform: scale(0.97); */
+  transition: ease-in-out 200ms;
+  color: rgb(0, 0, 0);
+}
+
+.key {
+  border-radius: 6px;
+  border: 1px solid black;
+  margin: 0.11rem;
+  width: 45px;
+  height: 45px;
+  font-size: 1.4rem;
+  background-color: white;
+  color: hsl(200, 25%, 75%);
+  box-shadow: 2px -2px 3px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  transition: 0.1s;
+  aspect-ratio: 1/1;
+  font-weight: bold;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+
+.key:is(:disabled) {
+  cursor: auto;
+}
+.key:hover:not(:disabled) {
+  background-color: hsl(250, 13%, 25%);
+  color: hsl(250, 13%, 75%);
+  transition: 0.1s;
+  box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.6);
+}
+
+.key:hover:not(:disabled)::before {
+  box-shadow: 1px -1px 1px rgba(185, 181, 181, 0.097);
+}
+
+.key:active:not(:disabled) {
+  scale: 0.93;
+  box-shadow: 0px 0px 0px rgba(185, 181, 181, 0.37);
+  color: hsl(200, 30%, 95%);
+  background-color: hsl(195, 8%, 10%);
+}
+.key:active:not(:disabled)::before {
+  scale: 0.93;
+  box-shadow: 6px -1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.key.active {
+  scale: 0.93;
+  box-shadow: 0px 0px 0px rgba(185, 181, 181, 0.37);
+  color: hsl(200, 30%, 95%);
+  background-color: hsl(195, 8%, 10%);
+}
+
+.key.active::before {
+  scale: 0.93;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.4);
+}
+
+.key.inacive {
+  opacity: 0.3;
+  scale: 0.97;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.4);
+}
+
+@media screen and (max-width: 900px) {
+  .spacer {
+    height: 100vh;
+  }
+  .drawing {
+    scale: 0.8;
+    /* bottom: 100px ; */
+  }
+
+  .word-container {
+    scale: 0.6;
+  }
+
+  .key {
+    width: 31px;
+    height: 31px;
+    border-radius: 10px;
+  }
+}
