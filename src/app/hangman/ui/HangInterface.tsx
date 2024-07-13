@@ -29,6 +29,8 @@ export function HangInterface({ randomWord }: HangInterfaceType) {
           } catch (e) {
             setWord(() => prevWord);
           }
+        } else {
+          setWord(randomWord);
         }
       }
     }
