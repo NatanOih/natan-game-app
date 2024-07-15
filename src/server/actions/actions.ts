@@ -61,9 +61,12 @@ type HangGameResetResult = string | { error: unknown };
 
 export async function hangGameReset(): Promise<HangGameResetResult> {
   try {
-    const response = await fetch("https://random-word-api.herokuapp.com/word", {
-      cache: "no-store",
-    });
+    const response = await fetch(
+      "https://random-word-api.herokuapp.com/word?lang=en",
+      {
+        cache: "no-store",
+      },
+    );
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -74,5 +77,32 @@ export async function hangGameReset(): Promise<HangGameResetResult> {
     return newWordData;
   } catch (error) {
     return { error: error };
+  }
+}
+
+type getHintType = {
+  word: string;
+};
+export async function getHint({
+  word,
+}: getHintType): Promise<HangGameResetResult> {
+  try {
+    const response = await fetch(
+      `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`,
+      {
+        cache: "no-store",
+      },
+    );
+
+    const data = await response.json();
+    if (data.title == "No Definitions Found") {
+      return "cant get a hint for this word.. shitty api sorry";
+    }
+
+    const hint = data[0].meanings[0].definitions[0].definition as string;
+
+    return hint;
+  } catch (error) {
+    return { error: "error" };
   }
 }

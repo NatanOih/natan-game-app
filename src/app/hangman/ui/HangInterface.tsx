@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
-import { hangGameReset } from "~/server/actions/actions";
+import { getHint, hangGameReset } from "~/server/actions/actions";
 import { Button } from "~/components/ui/button";
 import { guessedWord, lattersUsed } from "~/store/atomStates";
 
@@ -16,6 +16,7 @@ export function HangInterface({ randomWord }: HangInterfaceType) {
   const [word, setWord] = useAtom(guessedWord);
   const setLattersUsedState = useSetAtom(lattersUsed);
   const backSpace = useAtomValue(lattersUsed);
+  const [hint, setHint] = useState("");
 
   useEffect(() => {
     async function handleStore() {
@@ -43,19 +44,39 @@ export function HangInterface({ randomWord }: HangInterfaceType) {
       <h1>Random Word from server -- {randomWord}</h1>
       <h1> current word on client -- {word}</h1>
 
-      <form
-        className="p-4"
-        action={async () => {
-          const newWordNew = await hangGameReset();
-          setLattersUsedState("");
-          setWord(newWordNew as string);
-          return;
-        }}
-      >
-        <Button variant={"destructive"} type="submit">
-          new game
-        </Button>
-      </form>
+      <div className="- flex flex-row items-center justify-center gap-4">
+        <form
+          className="p-4"
+          action={async () => {
+            const newWordNew = await hangGameReset();
+            setLattersUsedState("");
+            setWord(newWordNew as string);
+            setHint("");
+
+            return;
+          }}
+        >
+          <Button variant={"secondary"} type="submit">
+            new game
+          </Button>
+        </form>
+
+        <form
+          className="p-4"
+          action={async () => {
+            const newHint = await getHint({ word });
+            setHint(newHint as string);
+
+            return;
+          }}
+        >
+          <Button variant={"destructive"} type="submit">
+            need a hint?
+          </Button>
+        </form>
+      </div>
+
+      {hint}
 
       <h1 className="flex h-fit w-fit flex-col items-center justify-center gap-4 font-bold text-gray-50">
         <span>

@@ -248,3 +248,22 @@
     border-radius: 10px;
   }
 }
+
+.stickman {
+  animation: hang 1s infinite cubic-bezier(0.455, 0.03, 0.515, 0.555);
+}
+
+@keyframes hang {
+  50% {
+    transform: rotate(0.5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.drawing {
+  position: relative;
+  scale: 0.75;
+  bottom: 50px;
+}
