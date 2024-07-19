@@ -4,6 +4,7 @@
 
 import { copyGrid } from "~/utils/utilFunctions";
 import { Sudoku } from "../sudukuLogic/sudoku";
+import { hangManWords } from "~/lib/data";
 
 export async function myAction(action: string, grid: number[][]) {
   const sudoku = new Sudoku();
@@ -59,25 +60,9 @@ export async function myAction(action: string, grid: number[][]) {
 
 type HangGameResetResult = string | { error: unknown };
 
-export async function hangGameReset(): Promise<HangGameResetResult> {
-  try {
-    const response = await fetch(
-      "https://random-word-api.herokuapp.com/word?lang=en",
-      {
-        cache: "no-store",
-      },
-    );
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    const data = await response.json();
-    const newWordData = data[0] as string;
-
-    return newWordData;
-  } catch (error) {
-    return { error: error };
-  }
+export async function hangGameReset() {
+  const newWord = hangManWords[Math.floor(Math.random() * hangManWords.length)];
+  return newWord;
 }
 
 type getHintType = {

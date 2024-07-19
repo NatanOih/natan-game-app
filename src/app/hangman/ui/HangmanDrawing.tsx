@@ -3,103 +3,58 @@ import { useAtomValue } from "jotai";
 import React, { useEffect } from "react";
 import { lattersUsed } from "~/store/atomStates";
 
-const HEAD = (
-  <div
-    style={{
-      fontSize: "23px",
-      width: "50px",
-      height: "50px",
-      borderRadius: "100%",
-      border: "10px solid black",
-      position: "absolute",
-      top: "50px",
-      right: "-15px",
-      boxShadow: "0px 0px 2px white",
-    }}
-  >
+const EYE = <span> X </span>;
+const Fraum = (
+  <span className="absolute left-5 top-4 rotate-90 text-white">{"("}</span>
+);
+
+type HEADtype = {
+  numberOfGuesses: number;
+};
+
+const HEAD = ({ numberOfGuesses }: HEADtype) => (
+  <div className="absolute -right-4 top-12 h-12 w-12 rounded-full border-4 border-black bg-black text-2xl">
     <span
-      className="flex flex-row justify-center gap-1 text-sm"
+      className="relative flex flex-row justify-center gap-1 text-[23px]"
       style={{ color: "white" }}
     >
-      <span>X</span>
-      <span>X</span>
+      <span className={`${numberOfGuesses < 2 && "opacity-0"}`}> {EYE}</span>
+      <span className={`${numberOfGuesses < 3 && "opacity-0"}`}> {EYE}</span>
+
+      {numberOfGuesses > 3 && Fraum}
     </span>
   </div>
 );
 const BODY = (
   <div
+    className="absolute right-0 top-[100px] h-[100px] w-[10px] bg-black shadow-[0_0_2px_white]"
     key="BODY"
-    style={{
-      width: "10px",
-      height: "100px",
-      background: "black",
-      position: "absolute",
-      top: "110px",
-      right: "0px",
-      boxShadow: "0px 0px 4px white",
-    }}
   />
 );
 const ARML = (
   <div
+    className="absolute right-[-18px] top-[130px] h-[7px] w-[70px] rotate-[-75deg] bg-black shadow-[0_0_2px_white]"
     key="ARML"
-    style={{
-      width: "70px",
-      height: "10px",
-      background: "black",
-      position: "absolute",
-      top: "130px",
-      right: "0px",
-      rotate: "-35deg",
-      boxShadow: "0px 0px 2px white",
-    }}
   />
 );
 const ARMR = (
   <div
+    className="absolute right-[-45px] top-[130px] h-[7px] w-[70px] rotate-[-110deg] bg-black shadow-[0_0_2px_white]"
     key="ARMR"
-    style={{
-      width: "70px",
-      height: "10px",
-      background: "black",
-      position: "absolute",
-      top: "130px",
-      right: "-55px",
-      rotate: "-145deg",
-      boxShadow: "0px 0px 2px white",
-    }}
   />
 );
 
 const LEGL = (
   <div
+    className="absolute right-[-22px] top-[230px] h-[7px] w-[80px] rotate-[-75deg] bg-black shadow-[0_0_2px_white]"
     key="LEGL"
-    style={{
-      width: "70px",
-      height: "10px",
-      background: "black",
-      position: "absolute",
-      top: "230px",
-      right: "-22px",
-      rotate: "-75deg",
-      boxShadow: "0px 0px 2px white",
-    }}
   />
 );
 
 const LEGR = (
   <div
     key="LEGR"
-    style={{
-      width: "70px",
-      height: "10px",
-      background: "black",
-      position: "absolute",
-      top: "220px",
-      right: "-56px",
-      rotate: "-145deg",
-      boxShadow: "0px 0px 2px white",
-    }}
+    className="absolute right-[-47px] top-[227px] h-[7px] w-[80px] rotate-[-105deg] bg-black shadow-[0_0_2px_white]"
   />
 );
 
@@ -107,45 +62,24 @@ type HangmanProps = {
   numberOfGuesses: number;
 };
 
-const BODY_PARTS = ["", BODY, ARML, ARMR, LEGL, LEGR];
+const BODY_PARTS = ["", "", "", "", BODY, ARML, ARMR, LEGL, LEGR];
 
 export const HangmanDrawing = () => {
   const numberOfGuesses = useAtomValue(lattersUsed).length;
 
   return (
-    <div className="relative scale-[90%] p-2">
-      <div
-        style={{
-          height: "60px",
-          width: "2px",
-          background: "#0A2647",
-          position: "absolute",
-          top: "7px",
-          right: "230px",
-        }}
-      />
+    <section className="relative max-w-fit scale-[80%] overflow-hidden rounded-lg bg-red-100/80 p-24">
+      <div className="relative left-[25%]">
+        <div className="right-10 h-[10px] w-[150px] bg-[#0A2647]" />
+        <div className="right-10 h-[400px] w-[10px] bg-[#0A2647]" />
+        <div className="h-[10px] w-[200px] -translate-x-24 bg-[#0A2647]" />
+        <div className="absolute left-[150px] top-0 h-[60px] w-[4px] bg-[#0A2647]" />
 
-      <div className={`stickman absolute left-[280px]`}>
-        {numberOfGuesses > 0 && HEAD}
-        {BODY_PARTS.slice(1, numberOfGuesses)}
+        <div className={`stickman absolute left-[155px] top-2`}>
+          {numberOfGuesses > 0 && <HEAD numberOfGuesses={numberOfGuesses} />}
+          {BODY_PARTS.slice(3, numberOfGuesses)}
+        </div>
       </div>
-      <div
-        style={{
-          height: "10px",
-          width: "150px",
-          background: "#0A2647",
-          marginLeft: "120px",
-        }}
-      />
-      <div
-        style={{
-          height: "400px",
-          width: "10px",
-          background: "#0A2647",
-          marginLeft: "120px",
-        }}
-      />
-      <div style={{ height: "10px", width: "250px", background: "#0A2647" }} />
-    </div>
+    </section>
   );
 };

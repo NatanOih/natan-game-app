@@ -53,7 +53,7 @@ export const KeyBoard = ({}) => {
 
   return (
     <section className="relative flex flex-col items-center justify-center gap-4 p-2">
-      <BackButton handleBackSpace={handleBackSpace} />
+      <BackButton handleBackSpace={handleBackSpace} backspaceText={backSpace} />
 
       <div className="flex flex-col items-center justify-center gap-1">
         {[...letters].map((array, index) => {

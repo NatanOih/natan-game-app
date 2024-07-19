@@ -267,3 +267,32 @@
   scale: 0.75;
   bottom: 50px;
 }
+
+.spinAnimation:hover::before {
+  animation: animate_card 1.8s linear infinite;
+}
+
+@keyframes animate_card {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.bounceAnimation {
+  animation: bounce1 2s infinite;
+}
+
+@keyframes bounce1 {
+  0%,
+  100% {
+    transform: translateY(-5%);
+    animation-timing-function: cubic-bezier(0.2, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.1, 1);
+  }
+}

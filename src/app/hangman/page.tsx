@@ -14,8 +14,7 @@ export default async function page() {
   }
 
   return (
-    <section className="flex flex-col gap-4 p-4">
-      <HangmanDrawing />
+    <section className="flex flex-col items-center justify-center gap-4 p-4">
       <HangInterface randomWord={randomWord} />
       <KeyBoard />
     </section>

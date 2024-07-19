@@ -5,7 +5,6 @@ import { cn } from "~/lib/utils";
 
 export default function Logo() {
   const isMobile = useIsMobile();
-  console.log("isMobile", isMobile);
 
   return (
     <span
