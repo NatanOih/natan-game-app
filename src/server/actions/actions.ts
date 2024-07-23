@@ -96,3 +96,6 @@ export async function checkValidWord(word: string) {
   if (wordleWords.includes(word)) return true;
   return false;
 }
+export async function newWordleWord() {
+  return wordleWords[Math.floor(Math.random() * wordleWords.length)]!;
+}

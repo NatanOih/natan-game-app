@@ -4,6 +4,7 @@
 import { wordleWords } from "~/lib/data";
 import GuessesUI from "./ui/GuessesUI";
 import HeadLine from "../../components/HeadLine";
+import WordleInterface from "./ui/WordleInterface";
 
 export default function Wordle() {
   const serverWord =
@@ -12,6 +13,7 @@ export default function Wordle() {
   return (
     <section className="flex flex-col items-center justify-center gap-12 p-4">
       <HeadLine headline="Wordle" />
+      <WordleInterface />
       <GuessesUI serverWord={serverWord} />
     </section>
   );
