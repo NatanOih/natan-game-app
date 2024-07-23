@@ -296,3 +296,94 @@
     animation-timing-function: cubic-bezier(0, 0, 0.1, 1);
   }
 }
+
+@keyframes animateDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes animateUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.animateUp {
+  animation: animateUp 0.2s forwards;
+}
+
+.animateDown {
+  animation: animateDown 0.5s forwards;
+}
+
+.neo-brutalism-inner-shadow {
+  position: relative;
+  box-shadow:
+    inset 0 5px 3px rgba(0, 0, 0, 0.85),
+    inset 0 -5px 5px rgba(0, 0, 0, 0.85),
+    inset 5px 0 5px rgba(0, 0, 0, 0.95),
+    inset -5px 0 5px rgba(0, 0, 0, 0.85);
+}
+
+.neo-brutalism-inner-shadow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at top left,
+    rgba(39, 154, 207, 0.2),
+    transparent 70%
+  );
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.hightlightAnimation {
+  animation: hightlightAnimation 1s ease-in-out infinite;
+  border: rgb(153, 158, 190) 1px solid;
+}
+
+@keyframes hightlightAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.letterPop {
+  animation: pop 0.5s forwards;
+}
+
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

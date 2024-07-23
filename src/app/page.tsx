@@ -1,9 +1,10 @@
 import Link from "next/link";
 import GameCard from "~/components/GameCard";
 import { Button } from "~/components/ui/button";
+import { games } from "~/lib/data";
 
 export default function HomePage() {
-  const games = ["sudoku", "hangman", "wordle"];
+  // const games = ["sudoku", "hangman", "wordle"];
 
   return (
     <section className="min-h[100vh] flex w-full flex-row flex-wrap justify-center gap-6 px-16 text-lg">

@@ -1,5 +1,18 @@
-import React from "react";
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 
-export default function wordle() {
-  return <section className="text-white">wordle</section>;
+import { wordleWords } from "~/lib/data";
+import GuessesUI from "./ui/GuessesUI";
+import HeadLine from "../../components/HeadLine";
+
+export default function Wordle() {
+  const serverWord =
+    wordleWords[Math.floor(Math.random() * wordleWords.length)]!;
+
+  return (
+    <section className="flex flex-col items-center justify-center gap-12 p-4">
+      <HeadLine headline="Wordle" />
+      <GuessesUI serverWord={serverWord} />
+    </section>
+  );
 }

@@ -77,6 +77,7 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         "spin-fast": "spin 1s linear infinite",
         "bounce-slow": "animation 3s linear infinite",
+        "ping-slow": "animation 1s",
       },
     },
   },

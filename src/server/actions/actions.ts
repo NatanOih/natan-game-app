@@ -4,7 +4,7 @@
 
 import { copyGrid } from "~/utils/utilFunctions";
 import { Sudoku } from "../sudukuLogic/sudoku";
-import { hangManWords } from "~/lib/data";
+import { hangManWords, wordleWords } from "~/lib/data";
 
 export async function myAction(action: string, grid: number[][]) {
   const sudoku = new Sudoku();
@@ -90,4 +90,9 @@ export async function getHint({
   } catch (error) {
     return { error: "error" };
   }
+}
+
+export async function checkValidWord(word: string) {
+  if (wordleWords.includes(word)) return true;
+  return false;
 }

@@ -68,7 +68,7 @@ export const HangmanDrawing = () => {
   const numberOfGuesses = useAtomValue(lattersUsed).length;
 
   return (
-    <section className="relative max-w-fit scale-[80%] overflow-hidden rounded-lg bg-red-100/80 p-24">
+    <section className="neo-brutalism-inner-shadow relative max-w-fit scale-[80%] overflow-hidden rounded-lg bg-blue-100/80 p-24">
       <div className="relative left-[25%]">
         <div className="right-10 h-[10px] w-[150px] bg-[#0A2647]" />
         <div className="right-10 h-[400px] w-[10px] bg-[#0A2647]" />

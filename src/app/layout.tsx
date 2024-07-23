@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "flex min-h-[100vh] select-none flex-col items-center justify-between gap-2 bg-[#010101] p-2 sm:gap-8",
+          "flex min-h-[100vh] select-none flex-col items-center justify-between gap-2 bg-[#121213] p-2 sm:gap-8",
           fontSans.variable,
         )}
       >
