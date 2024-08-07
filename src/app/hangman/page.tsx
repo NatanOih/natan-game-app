@@ -2,9 +2,9 @@ import Link from "next/link";
 import React from "react";
 import { hangGameReset } from "~/server/actions/actions";
 
-import { KeyBoard } from "./ui/KeyBoard";
-import { HangInterface } from "./ui/HangInterface";
-import { HangmanDrawing } from "./ui/HangmanDrawing";
+import { KeyBoard } from "./_ui/KeyBoard";
+import { HangInterface } from "./_ui/HangInterface";
+import { HangmanDrawing } from "./_ui/HangmanDrawing";
 import HeadLine from "~/components/HeadLine";
 
 export default async function page() {

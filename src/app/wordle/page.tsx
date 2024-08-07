@@ -2,9 +2,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
 import { wordleWords } from "~/lib/data";
-import GuessesUI from "./ui/GuessesUI";
+import GuessesUI from "./_ui/GuessesUI";
 import HeadLine from "../../components/HeadLine";
-import WordleInterface from "./ui/WordleInterface";
+import WordleInterface from "./_ui/WordleInterface";
 
 export default function Wordle() {
   const serverWord =

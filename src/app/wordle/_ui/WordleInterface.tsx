@@ -1,6 +1,8 @@
 "use client";
 
-import { useSetAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
+import { use } from "react";
+import { Button } from "~/components/ui/button";
 import { newWordleWord } from "~/server/actions/actions";
 import {
   currentGuess,
@@ -14,7 +16,7 @@ export default function WordleInterface() {
   const setWordleWords = useSetAtom(wordleGuesses);
   const setCurrentWord = useSetAtom(currentGuess);
   const setPointer = useSetAtom(guessNumber);
-  const setWon = useSetAtom(hasWon);
+  const [won, setWon] = useAtom(hasWon);
   const setTargetWord = useSetAtom(wordleWordToGuess);
 
   const resetGame = (serverWord: string) => {
@@ -31,7 +33,14 @@ export default function WordleInterface() {
           resetGame(await newWordleWord());
         }}
       >
-        <button type="submit"> New Game</button>
+        <Button
+          variant={"secondary"}
+          className={`${won && "animate-pulse"}`}
+          type="submit"
+        >
+          {" "}
+          New Game
+        </Button>
       </form>
     </section>
   );

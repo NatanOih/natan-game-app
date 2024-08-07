@@ -1106,4 +1106,4 @@ export const wordleWords = [
   "zebra",
 ] as string[];
 
-export const games = ["sudoku", "hangman", "wordle"] as string[];
+export const games = ["sudoku", "hangman", "wordle", "minesweeper"] as string[];
