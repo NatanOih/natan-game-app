@@ -31,6 +31,7 @@ export default function GuessesUI({ serverWord }: GuessesUIType) {
 
   useEffect(() => {
     const keyUpHandler = async (e: KeyboardEvent) => {
+      setErrorMsg(false);
       if (won) return;
       const key = e.key;
       if (key === "Backspace") {

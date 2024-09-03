@@ -99,3 +99,11 @@ export async function checkValidWord(word: string) {
 export async function newWordleWord() {
   return wordleWords[Math.floor(Math.random() * wordleWords.length)]!;
 }
+
+export async function createMineSweeper({ size }: { size: string }) {
+  const sizes = {
+    small: 0,
+    medium: 1,
+    large: 2,
+  };
+}
